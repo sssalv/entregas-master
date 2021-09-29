@@ -1,0 +1,22 @@
+body{
+    background-color: #131417;
+    margin: 0;
+}
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d70a84;
+}
+
+.box-item {
+    width: 50%;
+}
