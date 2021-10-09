@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Varela&display=swap");
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+:root {
+  --mainColor: #d70a84;
+  --gap: 50px;
+}
+html {
+  font-size: 18px;
+  line-height: 26px;
+  color: #d70a84;
+  font-family: "Montserrat", sans-serif;
+}
+h1, h2, h3 {
+  font-family: "Varela", sans-serif;
+  font-size: 1.5rem;
+}
+body {
+  background-color: #131417;
+  margin: 0;
+}
+main {
+  flex-direction: column;
+  padding: var(--gap);
+  height: 100vh;
+  gap: var(--gap);
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+.box {
+  height: 100%;
+  gap: var(--gap);
+  color: #fff;
+}
+.box-item {
+  max-height: 200px;
+  flex-flow: column wrap;
+  text-align: center;
+  border: 2px solid;
+  box-shadow: 0 0 15px 0px #b006ff4b;
+  border-radius: 15px;
+  background-color: #15171f;
+  padding: 15px;
+  flex-grow: 1;
+}
+.box-item_main {
+  transform: scaleY(1.07);
+  border-width: 5px;
+  font-size: 1.15em;
+  font-weight: 600;
+}
+.box-item p {
+  font-style: italic;
+}
+.red .box-item_main {
+  background-color: #bb1818d7;
+}
+.red .box-item {
+  border-color: rgba(97, 12, 12, 0.8431372549);
+}
+.red .box-item.box-item_1 {
+  background-color: rgba(164, 21, 21, 0.8431372549);
+}
+.red .box-item.box-item_2 {
+  background-color: rgba(142, 18, 18, 0.8431372549);
+}
+.red .box-item.box-item_3 {
+  background-color: rgba(119, 15, 15, 0.8431372549);
+}
+.red .box-item.box-item_4 {
+  background-color: rgba(97, 12, 12, 0.8431372549);
+}
+.red .box-item.box-item_5 {
+  background-color: rgba(235, 103, 103, 0.8431372549);
+}
+.red .box-item.box-item_6 {
+  background-color: rgba(238, 126, 126, 0.8431372549);
+}
+.red .box-item.box-item_7 {
+  background-color: rgba(241, 148, 148, 0.8431372549);
+}
+.red .box-item.box-item_8 {
+  background-color: rgba(244, 171, 171, 0.8431372549);
+}
+.pink .box-item_main {
+  background-color: #d70a84;
+}
+.pink .box-item {
+  border-color: #760548;
+}
+.pink .box-item.box-item_1 {
+  background-color: #bf0975;
+}
+.pink .box-item.box-item_2 {
+  background-color: #a60866;
+}
+.pink .box-item.box-item_3 {
+  background-color: #8e0757;
+}
+.pink .box-item.box-item_4 {
+  background-color: #760548;
+}
+.pink .box-item.box-item_5 {
+  background-color: #f869be;
+}
+.pink .box-item.box-item_6 {
+  background-color: #f981c8;
+}
+.pink .box-item.box-item_7 {
+  background-color: #fa99d3;
+}
+.pink .box-item.box-item_8 {
+  background-color: #fbb2de;
+}
+.violet .box-item_main {
+  background-color: #7413a5;
+}
+.violet .box-item {
+  border-color: #34084a;
+}
+.violet .box-item.box-item_1 {
+  background-color: #64108e;
+}
+.violet .box-item.box-item_2 {
+  background-color: #540e77;
+}
+.violet .box-item.box-item_3 {
+  background-color: #440b60;
+}
+.violet .box-item.box-item_4 {
+  background-color: #34084a;
+}
+.violet .box-item.box-item_5 {
+  background-color: #b64deb;
+}
+.violet .box-item.box-item_6 {
+  background-color: #bf64ed;
+}
+.violet .box-item.box-item_7 {
+  background-color: #c87bf0;
+}
+.violet .box-item.box-item_8 {
+  background-color: #d292f2;
+}
+/*# sourceMappingURL=index.6c64432c.css.map */
