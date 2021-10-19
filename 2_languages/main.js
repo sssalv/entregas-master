@@ -14,7 +14,7 @@ function biggestWord(phrase) {
     let splitMessage = phrase.split(' ')
     for (let i = 0; i < splitMessage.length; i++) {
         let element = splitMessage[i].length;
-        if (element <){
+        if (element){
 
         }
         
