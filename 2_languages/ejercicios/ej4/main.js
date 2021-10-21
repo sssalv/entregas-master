@@ -20,13 +20,21 @@
 // // El resultado de mezclar a sobre b sería:
 // merge(a, b); // {name: "Maria", age: 31, married: true, surname: "Ibañez", country: "SPA"}
 
-function clone(source) {
-    var target =  new Object(source)
-    console.log(source)
-    console.log(target)
+const roberto = { name: "Roberto", surname: "Ibañez", country: "ESP" };
+const lucia = { name: "Lucía", age: 31, married: false };
+
+
+const clone = (target,source) =>{
+    console.log(Object.assign(target,source))
 }
 
-var a = { name: "🥓", surname: "Ibañez", country: "SPA" };
-var b = { name: "🥩", age: 31, married: true };
+merge = (target,source) =>{
+    console.log(`Convirtiendo a ${target.name} en ${source.name}...`)
 
-clone(a)
+    const prevName = target.name
+    Object.assign(target,source)
+    
+    console.log(`Ahora ${prevName} se llama ${source.name}`)
+}
+
+merge(lucia,roberto)
