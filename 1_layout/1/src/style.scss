@@ -43,7 +43,7 @@ main {
     max-height: 200px;
     flex-flow: column wrap;
     text-align: center;
-    border: 2px solid;
+    border: 1px solid;
     box-shadow: 0 0 15px 0px #b006ff4b;
     border-radius: 15px;
     background-color: #15171f;
@@ -52,7 +52,7 @@ main {
 }
 .box-item_main{
     transform: scaleY(1.07);
-    border-width: 5px;
+    border-width: 3px;
     font-size: 1.15em;
     font-weight: 600;
 }
@@ -68,7 +68,6 @@ main {
     }
 
     .box-item {
-        border-color: darken($color,  20%);
         @for $i from 1 through 4 {
             &.box-item_#{$i} {
                 background-color: darken($color, $i * 5%);
@@ -89,7 +88,6 @@ main {
     }
 
     .box-item {
-        border-color: darken($color,  20%);
         @for $i from 1 through 4 {
             &.box-item_#{$i} {
                 background-color: darken($color, $i * 5%);
@@ -110,7 +108,6 @@ main {
     }
 
     .box-item {
-        border-color: darken($color,  20%);
         @for $i from 1 through 4 {
             &.box-item_#{$i} {
                 background-color: darken($color, $i * 5%);
