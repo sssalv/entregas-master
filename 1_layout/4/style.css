@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Varela&display=swap');
+*{    
+    box-sizing: border-box;
+}
+:root{
+    --mainColor: rgb(13, 230, 175);
+}
+html{
+    font-size: 18px;
+    color: var(--mainColor);
+    font-family: Montserrat;
+}
+body{
+    background-color: #131417;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    max-width: 100%;
+}
+a{
+    all: unset;
+    cursor: pointer;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.grid_item {
+    border: 1px solid var(--mainColor);
+    border-radius: 10px;
+    box-shadow: 0 0 35px -5px rgba(13, 230, 175, 0.25);   
+    width: 550px;
+    overflow: hidden;
+    display: grid;
+    
+    flex-flow: column wrap;
+    background-color: #15171f;
+}
+.grid_img{
+    transform-origin: 50% 100%;
+    transition: .2s ease;
+}
+.grid_img:hover {
+    transform: scale(1.3);
+}
+.grid_info{
+    padding: 35px;
+    display: grid;
+    grid-gap: 25px;
+}
+.grid_info > *{
+    margin: 0;
+}
+.grid_info .grid_date{
+    align-self: flex-end;
+    text-align: right;
+}
+.grid_info .grid_date span{
+    background: var(--mainColor);
+    color: #15171f;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 3px;
+}
+.btn{
+    font-size: 1.25rem;
+    padding: 15px 30px;
+    text-align: center;
+    background-color: var(--mainColor);
+    color: #15171f;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: .2s ease;
+}
+.btn:hover{
+    background: hsl(165, 89%, 43%)
+}

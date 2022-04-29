@@ -6,7 +6,7 @@
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
 
-(function(modules, entry, mainEntry, parcelRequireName, globalName) {
+(function (modules, entry, mainEntry, parcelRequireName, globalName) {
   /* eslint-disable no-undef */
   var globalObject =
     typeof globalThis !== 'undefined'
@@ -80,11 +80,13 @@
     return cache[name].exports;
 
     function localRequire(x) {
-      return newRequire(localRequire.resolve(x));
+      var res = localRequire.resolve(x);
+      return res === false ? {} : newRequire(res);
     }
 
     function resolve(x) {
-      return modules[name][1][x] || x;
+      var id = modules[name][1][x];
+      return id != null ? id : x;
     }
   }
 
@@ -99,9 +101,9 @@
   newRequire.modules = modules;
   newRequire.cache = cache;
   newRequire.parent = previousRequire;
-  newRequire.register = function(id, exports) {
+  newRequire.register = function (id, exports) {
     modules[id] = [
-      function(require, module) {
+      function (require, module) {
         module.exports = exports;
       },
       {},
@@ -109,7 +111,7 @@
   };
 
   Object.defineProperty(newRequire, 'root', {
-    get: function() {
+    get: function () {
       return globalObject[parcelRequireName];
     },
   });
@@ -131,7 +133,7 @@
 
       // RequireJS
     } else if (typeof define === 'function' && define.amd) {
-      define(function() {
+      define(function () {
         return mainExports;
       });
 
@@ -140,21 +142,32 @@
       this[globalName] = mainExports;
     }
   }
-})({"bNlUH":[function(require,module,exports) {
+})({"bHxS6":[function(require,module,exports) {
+"use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
-var HMR_ENV_HASH = "69f74e7f31319ffd";
-module.bundle.HMR_BUNDLE_ID = "1a8207d31354f92b";
-"use strict";
+var HMR_ENV_HASH = "d6ea1d42532a7575";
+module.bundle.HMR_BUNDLE_ID = "d0fcd9993df7cc9b";
+function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _iterableToArray(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
 function _createForOfIteratorHelper(o, allowArrayLike) {
-    var it;
-    if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+    if (!it) {
         if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
             if (it) o = it;
             var i = 0;
-            var F = function F1() {
-            };
+            var F = function F() {};
             return {
                 s: F,
                 n: function n() {
@@ -177,7 +190,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
     var normalCompletion = true, didErr = false, err;
     return {
         s: function s() {
-            it = o[Symbol.iterator]();
+            it = it.call(o);
         },
         n: function n() {
             var step = it.next();
@@ -210,7 +223,7 @@ function _arrayLikeToArray(arr, len) {
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
     return arr2;
 }
-/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser */ /*::
 import type {
   HMRAsset,
   HMRMessage,
@@ -237,11 +250,18 @@ interface ParcelModule {
     _disposeCallbacks: Array<(mixed) => void>,
   |};
 }
+interface ExtensionContext {
+  runtime: {|
+    reload(): void,
+  |};
+}
 declare var module: {bundle: ParcelRequire, ...};
 declare var HMR_HOST: string;
 declare var HMR_PORT: string;
 declare var HMR_ENV_HASH: string;
 declare var HMR_SECURE: boolean;
+declare var chrome: ExtensionContext;
+declare var browser: ExtensionContext;
 */ var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
 function Module(moduleName) {
@@ -251,8 +271,7 @@ function Module(moduleName) {
         _acceptCallbacks: [],
         _disposeCallbacks: [],
         accept: function accept(fn) {
-            this._acceptCallbacks.push(fn || function() {
-            });
+            this._acceptCallbacks.push(fn || function() {});
         },
         dispose: function dispose(fn) {
             this._disposeCallbacks.push(fn);
@@ -261,7 +280,7 @@ function Module(moduleName) {
     module.bundle.hotData = undefined;
 }
 module.bundle.Module = Module;
-var checkedAssets, acceptedAssets, assetsToAccept;
+var checkedAssets, acceptedAssets, assetsToAccept /*: Array<[ParcelRequire, string]> */ ;
 function getHostname() {
     return HMR_HOST || (location.protocol.indexOf('http') === 0 ? location.hostname : 'localhost');
 }
@@ -275,15 +294,13 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
     var protocol = HMR_SECURE || location.protocol == 'https:' && !/localhost|127.0.0.1|0.0.0.0/.test(hostname) ? 'wss' : 'ws';
     var ws = new WebSocket(protocol + '://' + hostname + (port ? ':' + port : '') + '/'); // $FlowFixMe
     ws.onmessage = function(event) {
-        checkedAssets = {
-        };
-        acceptedAssets = {
-        };
+        checkedAssets = {} /*: {|[string]: boolean|} */ ;
+        acceptedAssets = {} /*: {|[string]: boolean|} */ ;
         assetsToAccept = [];
         var data = JSON.parse(event.data);
         if (data.type === 'update') {
             // Remove error overlay if there is one
-            removeErrorOverlay();
+            if (typeof document !== 'undefined') removeErrorOverlay();
             var assets = data.assets.filter(function(asset) {
                 return asset.envHash === HMR_ENV_HASH;
             }); // Handle HMR Update
@@ -299,7 +316,12 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
                     var id = assetsToAccept[i][1];
                     if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
                 }
-            } else window.location.reload();
+            } else if ('reload' in location) location.reload();
+            else {
+                // Web extension context
+                var ext = typeof chrome === 'undefined' ? typeof browser === 'undefined' ? null : browser : chrome;
+                if (ext && ext.runtime && ext.runtime.reload) ext.runtime.reload();
+            }
         }
         if (data.type === 'error') {
             // Log parcel errors to console
@@ -309,15 +331,18 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
                     var ansiDiagnostic = _step.value;
                     var stack = ansiDiagnostic.codeframe ? ansiDiagnostic.codeframe : ansiDiagnostic.stack;
                     console.error('🚨 [parcel]: ' + ansiDiagnostic.message + '\n' + stack + '\n\n' + ansiDiagnostic.hints.join('\n'));
-                } // Render the fancy html overlay
+                }
             } catch (err) {
                 _iterator.e(err);
             } finally{
                 _iterator.f();
             }
-            removeErrorOverlay();
-            var overlay = createErrorOverlay(data.diagnostics.html); // $FlowFixMe
-            document.body.appendChild(overlay);
+            if (typeof document !== 'undefined') {
+                // Render the fancy html overlay
+                removeErrorOverlay();
+                var overlay = createErrorOverlay(data.diagnostics.html); // $FlowFixMe
+                document.body.appendChild(overlay);
+            }
         }
     };
     ws.onerror = function(e) {
@@ -343,9 +368,9 @@ function createErrorOverlay(diagnostics) {
         for(_iterator2.s(); !(_step2 = _iterator2.n()).done;){
             var diagnostic = _step2.value;
             var stack = diagnostic.codeframe ? diagnostic.codeframe : diagnostic.stack;
-            errorHTML += "\n      <div>\n        <div style=\"font-size: 18px; font-weight: bold; margin-top: 20px;\">\n          \uD83D\uDEA8 ".concat(diagnostic.message, "\n        </div>\n        <pre>\n          ").concat(stack, "\n        </pre>\n        <div>\n          ").concat(diagnostic.hints.map(function(hint) {
-                return '<div>' + hint + '</div>';
-            }).join(''), "\n        </div>\n      </div>\n    ");
+            errorHTML += "\n      <div>\n        <div style=\"font-size: 18px; font-weight: bold; margin-top: 20px;\">\n          \uD83D\uDEA8 ".concat(diagnostic.message, "\n        </div>\n        <pre>").concat(stack, "</pre>\n        <div>\n          ").concat(diagnostic.hints.map(function(hint) {
+                return '<div>💡 ' + hint + '</div>';
+            }).join(''), "\n        </div>\n        ").concat(diagnostic.documentation ? "<div>\uD83D\uDCDD <a style=\"color: violet\" href=\"".concat(diagnostic.documentation, "\" target=\"_blank\">Learn more</a></div>") : '', "\n      </div>\n    ");
         }
     } catch (err) {
         _iterator2.e(err);
@@ -390,7 +415,7 @@ function reloadCSS() {
             var href = links[i].getAttribute('href');
             var hostname = getHostname();
             var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
-            var absolute = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
+            var absolute = /^https?:\/\//i.test(href) && href.indexOf(location.origin) !== 0 && !servedFromHMRServer;
             if (!absolute) updateLink(links[i]);
         }
         cssTimeout = null;
@@ -399,20 +424,70 @@ function reloadCSS() {
 function hmrApply(bundle, asset) {
     var modules = bundle.modules;
     if (!modules) return;
-    if (asset.type === 'css') {
-        reloadCSS();
-        return;
+    if (asset.type === 'css') reloadCSS();
+    else if (asset.type === 'js') {
+        var deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
+        if (deps) {
+            if (modules[asset.id]) {
+                // Remove dependencies that are removed and will become orphaned.
+                // This is necessary so that if the asset is added back again, the cache is gone, and we prevent a full page reload.
+                var oldDeps = modules[asset.id][1];
+                for(var dep in oldDeps)if (!deps[dep] || deps[dep] !== oldDeps[dep]) {
+                    var id = oldDeps[dep];
+                    var parents = getParents(module.bundle.root, id);
+                    if (parents.length === 1) hmrDelete(module.bundle.root, id);
+                }
+            }
+            var fn = new Function('require', 'module', 'exports', asset.output);
+            modules[asset.id] = [
+                fn,
+                deps
+            ];
+        } else if (bundle.parent) hmrApply(bundle.parent, asset);
     }
-    var deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
-    if (deps) {
-        var fn = new Function('require', 'module', 'exports', asset.output);
-        modules[asset.id] = [
-            fn,
-            deps
-        ];
-    } else if (bundle.parent) hmrApply(bundle.parent, asset);
+}
+function hmrDelete(bundle, id1) {
+    var modules = bundle.modules;
+    if (!modules) return;
+    if (modules[id1]) {
+        // Collect dependencies that will become orphaned when this module is deleted.
+        var deps = modules[id1][1];
+        var orphans = [];
+        for(var dep in deps){
+            var parents = getParents(module.bundle.root, deps[dep]);
+            if (parents.length === 1) orphans.push(deps[dep]);
+        } // Delete the module. This must be done before deleting dependencies in case of circular dependencies.
+        delete modules[id1];
+        delete bundle.cache[id1]; // Now delete the orphans.
+        orphans.forEach(function(id) {
+            hmrDelete(module.bundle.root, id);
+        });
+    } else if (bundle.parent) hmrDelete(bundle.parent, id1);
 }
 function hmrAcceptCheck(bundle, id, depsByBundle) {
+    if (hmrAcceptCheckOne(bundle, id, depsByBundle)) return true;
+     // Traverse parents breadth first. All possible ancestries must accept the HMR update, or we'll reload.
+    var parents = getParents(module.bundle.root, id);
+    var accepted = false;
+    while(parents.length > 0){
+        var v = parents.shift();
+        var a = hmrAcceptCheckOne(v[0], v[1], null);
+        if (a) // If this parent accepts, stop traversing upward, but still consider siblings.
+        accepted = true;
+        else {
+            // Otherwise, queue the parents in the next level upward.
+            var p = getParents(module.bundle.root, v[1]);
+            if (p.length === 0) {
+                // If there are no parents, then we've reached an entry without accepting. Reload.
+                accepted = false;
+                break;
+            }
+            parents.push.apply(parents, _toConsumableArray(p));
+        }
+    }
+    return accepted;
+}
+function hmrAcceptCheckOne(bundle, id, depsByBundle) {
     var modules = bundle.modules;
     if (!modules) return;
     if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
@@ -421,22 +496,18 @@ function hmrAcceptCheck(bundle, id, depsByBundle) {
         if (!bundle.parent) return true;
         return hmrAcceptCheck(bundle.parent, id, depsByBundle);
     }
-    if (checkedAssets[id]) return;
+    if (checkedAssets[id]) return true;
     checkedAssets[id] = true;
     var cached = bundle.cache[id];
     assetsToAccept.push([
         bundle,
         id
     ]);
-    if (cached && cached.hot && cached.hot._acceptCallbacks.length) return true;
-    return getParents(module.bundle.root, id).some(function(v) {
-        return hmrAcceptCheck(v[0], v[1], null);
-    });
+    if (!cached || cached.hot && cached.hot._acceptCallbacks.length) return true;
 }
 function hmrAcceptRun(bundle, id) {
     var cached = bundle.cache[id];
-    bundle.hotData = {
-    };
+    bundle.hotData = {};
     if (cached && cached.hot) cached.hot.data = bundle.hotData;
     if (cached && cached.hot && cached.hot._disposeCallbacks.length) cached.hot._disposeCallbacks.forEach(function(cb) {
         cb(bundle.hotData);
@@ -454,8 +525,8 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"byKJO":[function(require,module,exports) {
+},{}],"5kOVX":[function(require,module,exports) {
 
-},{}]},["bNlUH","byKJO"], "byKJO", "parcelRequireed3f")
+},{}]},["bHxS6","5kOVX"], "5kOVX", "parcelRequireed3f")
 
-//# sourceMappingURL=1.1354f92b.js.map
+//# sourceMappingURL=2.3df7cc9b.js.map

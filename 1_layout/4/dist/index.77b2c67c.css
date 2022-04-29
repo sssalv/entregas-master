@@ -1,0 +1,59 @@
+@import "https://fonts.googleapis.com/css2?family=Montserrat&family=Varela&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Caveat&family=Poppins&display=swap";
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --mainColor: #d70a84;
+}
+
+html {
+  color: var(--mainColor);
+  font-family: Caveat;
+  font-size: 28px;
+}
+
+body {
+  background-color: #131417;
+  margin: 0;
+}
+
+.flex-center {
+  justify-content: center;
+  display: flex;
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+  gap: 50px;
+  padding: 50px;
+}
+
+.box-item {
+  width: 50%;
+  text-align: center;
+  background-color: #15171f;
+  border: 3px solid;
+  flex-flow: column wrap;
+  padding: 35px;
+}
+
+.theme_1 {
+  color: #0de6af;
+  border-width: 6px;
+  border-color: #0de6af;
+  border-radius: 30px;
+  box-shadow: 0 0 15px 15px #0de6af2d;
+}
+
+.theme_2 {
+  color: var(--mainColor);
+  border-color: var(--mainColor);
+  border-radius: 0;
+  font-family: Montserrat;
+  box-shadow: 0 0 15px 15px #d70a8413;
+}
+
+/*# sourceMappingURL=index.77b2c67c.css.map */
