@@ -1,17 +1,19 @@
 obj = {
-    1: 'podriamos',
-    2: 'haber',
-    3: 'podido'
+    podriamos: 'podriamos',
+    haber: 'haber',
+    podido: 'podido',
+    funcionar: (e) => {console.log(e*2)}
 }
 
 const clone = (source) => {
-    for (const key in source) {
-        if (Object.hasOwnProperty.call(source, key)) {
-            var element = source[key];
-        }
-    }
-    console.log('New object: '+ element);
-}
+    let newObj = {}
+    Object.assign(newObj, source)
+    
+    console.log('El objeto original es:',obj)
+    console.log('El objeto nuevo es:',newObj)
 
-console.log('Original object: ' + obj);
+    newObj.funcionar = (e) => {console.log(e*3)}
+    obj.funcionar(3)
+    newObj.funcionar(3)
+}
 clone(obj)
