@@ -1,10 +1,11 @@
 // concatenacion
 
-let a = [1,2,3]
-let b = ['a','b','c']
-let c = ['ccc','ccc','ccc']
-let d = ['ddd','ddd','ddd']
-let e = ['eee','eee','eee']
+let n = [1,2,3]
+let a = ['a','a','a']
+let b = ['b','b','b']
+let c = ['c','c','c']
+let d = ['d','d','d']
+let e = ['e','e','e']
 
 const concat = (a, b) => {
     let concatMethod = a.concat(b)  //metodo 1
@@ -14,7 +15,8 @@ const concat = (a, b) => {
         ...b
     ]
 
-    console.log(concatMethod,restOperator)
+    console.log(concatMethod)
+    console.log(restOperator)
 }
 
 concat(a,b)
@@ -22,10 +24,10 @@ concat(a,b)
 
 // opcional
 
-const optional = (a, ...optional) => {
-    let concatAll = a.concat(...optional)
-
-    console.log(concatAll)
+const concatAll = (...concatAll) => {
+    let baseArr = []
+    let result = baseArr.concat(...concatAll)
+    console.log(result)
 }
 
-optional(a,b,c,d,e)
+concatAll(a,b,c,d,e,n)

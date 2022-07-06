@@ -10,7 +10,8 @@ const clone = (source) => {
             var element = source[key];
         }
     }
-    console.log(element);
+    console.log('New object: '+ element);
 }
 
+console.log('Original object: ' + obj);
 clone(obj)
