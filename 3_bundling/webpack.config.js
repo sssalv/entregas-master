@@ -5,15 +5,15 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
   resolve: {
-    extensions: ['.js','.jsx']
+    extensions: ['.js','.jsx','.ts','.tsx']
   },
   entry: {
-    prod:["./src/scripts.jsx","./src/style.scss"],
+    prod:["./src/scripts.tsx","./src/style.scss"],
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
@@ -42,5 +42,11 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id]'.css,
     })
-  ]
+  ],
+  devServer:{
+    hot:true,
+    devMiddleware:{
+      stats: "errors-only",
+    },
+  },
 };

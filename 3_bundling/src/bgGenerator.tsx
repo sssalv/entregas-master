@@ -2,11 +2,11 @@ import React from "react";
 import { getBackground } from "./bgService";
 
 export const BgGenerator = () => {
-    const sizes = {
+    const sizes: Object = {
         width: window.innerWidth,
         height: window.innerHeight
     }
-    const bg = getBackground(sizes)
+    const bg:string = getBackground(sizes)
   
     React.useEffect(() => {
         document.body.style.backgroundImage = `url(${bg})`
