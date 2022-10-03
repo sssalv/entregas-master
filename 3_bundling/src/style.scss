@@ -1,0 +1,18 @@
+$main: hsla(245, 74%, 20%, 0.5);
+
+body {
+    background-color: $main;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    padding: 2em 1em;
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100vh;
+    font-family: system-ui;
+}

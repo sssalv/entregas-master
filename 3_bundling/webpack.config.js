@@ -1,30 +1,46 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 module.exports = {
+  resolve: {
+    extensions: ['.js','.jsx']
+  },
   entry: {
-    dev: ["./src/dev/scripts.js,./src/dev/style.css"],
-    prod:["./src/scripts.js,./src/style.css"],
+    prod:["./src/scripts.jsx","./src/style.scss"],
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
-        use: ["style-loader","css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"],
       },
     ],
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
       scriptLoading: "blocking",
       hash:"true"
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id]'.css,
     })
   ]
 };
