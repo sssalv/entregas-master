@@ -14,11 +14,7 @@ export const BgGenerator = () => {
 
     return (
         <div>
-            <p>
-                Image generated with Picsum
-                <br />
-                <small>Resolution based on client's window width and height</small>
-            </p>
+            <p>Image generated with Picsum <br /><small>Resolution based on client's window width and height</small></p>
         </div>
     );
 };
