@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack serve --mode development",
     "tscheck": "tsc --noEmit",
-    "start": "webpack --mode development"
+    "start:dev": "webpack --mode development --config webpack.config.dev.js",
+    "start:prod": "webpack --mode development --config webpack.config.prod.js"
   },
   "keywords": [],
   "author": "",
