@@ -1,5 +1,4 @@
-1_layout/.parcel-cache/
-1_layout/node_modules/
-3_bundling/.parcel-cache/
-3_bundling/node_modules/
 *.pdf
+*/.parcel-cache/
+*/node_modules/
+3_bundling/dist/
